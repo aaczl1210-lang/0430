@@ -1,15 +1,14 @@
-/* CSS Variables for Ukiyo-e theming */
+/* 地中海風格色譜 */
 :root {
-    --bg-color: #eaddcf; /* 和紙/宣紙的米黃色背景 */
-    --text-main: #2b2b2b; /* 木版畫的墨黑 */
-    --text-muted: #59544c; /* 較淺的墨色 */
-    --accent-color: #c73e3a; /* 傳統朱紅色 (印泥/強調) */
-    --secondary-color: #1c2e4a; /* 藍摺 (傳統深藍) */
-    --card-bg: #dcd1c4; /* 稍微深一點的紙色 */
-    --nav-height: 70px;
+    --med-white: #FFFFFF;      /* 聖托里尼白 */
+    --med-blue: #0077BE;       /* 愛琴海深藍 */
+    --med-sky: #87CEEB;        /* 晴空藍 */
+    --med-sand: #F5F5DC;       /* 沙灘米色 */
+    --med-terracotta: #E2725B; /* 赤陶色 (點綴) */
+    --text-dark: #2C3E50;      /* 深藍灰色文字 */
+    --nav-height: 80px;
 }
 
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -17,19 +16,26 @@
 }
 
 body {
-    /* 替換為襯線字體，展現漢字的傳統美感 */
-    font-family: 'Noto Serif TC', "PMingLiU", serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    line-height: 1.8;
-    scroll-behavior: smooth;
-    /* 加入淡淡的點狀紋理模擬和紙質感 */
-    background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
-    background-size: 10px 10px;
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: var(--med-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 背景裝飾：淡淡的波浪紋理 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(var(--med-sky) 0.5px, transparent 0.5px);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    z-index: -1;
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -40,306 +46,239 @@ body {
     top: 0;
     width: 100%;
     height: var(--nav-height);
-    background-color: var(--bg-color);
+    background-color: rgba(255, 255, 255, 0.95);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 4rem;
     z-index: 1000;
-    border-bottom: 3px solid var(--text-main);
+    box-shadow: 0 2px 15px rgba(0, 119, 190, 0.1);
+    border-bottom: 4px solid var(--med-blue);
 }
 
-/* 將 Logo 設計成類似傳統印章 (Hanko) */
 .nav-brand {
     font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--bg-color);
-    background-color: var(--accent-color);
-    padding: 0.2rem 0.8rem;
-    border: 2px solid var(--text-main);
-    border-radius: 4px;
-    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--med-blue);
+    letter-spacing: 1px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .nav-links a {
-    color: var(--text-main);
+    color: var(--text-dark);
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 700;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: var(--med-blue);
 }
 
-/* Common Section Styles */
-section {
-    padding: 100px 0;
+/* Hero Section - 圖片左置佈局 */
+.hero-section {
+    padding-top: var(--nav-height);
     min-height: 100vh;
     display: flex;
     align-items: center;
-    border-bottom: 2px dashed rgba(43, 43, 43, 0.2);
+    background: linear-gradient(180deg, var(--med-sand) 0%, var(--med-white) 100%);
 }
 
-.section-title {
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-    color: var(--secondary-color);
-    position: relative;
-    display: inline-block;
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
 }
 
-/* 加入傳統引號樣式裝飾標題 */
-.section-title::before {
-    content: '『';
-    color: var(--accent-color);
-}
-.section-title::after {
-    content: '』';
-    color: var(--accent-color);
-    display: inline;
-    width: auto;
-    height: auto;
-    background-color: transparent;
-    margin-top: 0;
+.hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
-/* Hero Section */
-.hero-section {
-    padding-top: calc(100px + var(--nav-height));
-    background: linear-gradient(135deg, rgba(28,46,74,0.03) 0%, rgba(199,62,58,0.03) 100%);
+/* 圖片樣式：更新為 object-fit: contain 確保完整顯示 */
+.hero-image {
+    width: 350px;
+    height: 450px;
+    /* 核心修改：確保圖片內容（如 Subject.png）完整顯示在容器內而不被裁切 */
+    object-fit: contain; 
+    
+    /* 拱門圓角造型 */
+    border-radius: 175px 175px 20px 20px; 
+    
+    /* 設定背景色與內距，讓圖片在圓弧內有呼吸空間，像展示於壁龕中 */
+    background-color: var(--med-white);
+    padding: 15px;
+    
+    /* 邊框與立體陰影 */
+    border: 10px solid var(--med-white);
+    box-shadow: 0 20px 40px rgba(0, 119, 190, 0.15);
+}
+
+.hero-content {
+    flex: 1.2;
 }
 
 .hero-title {
-    font-size: 4.5rem;
-    font-weight: 900;
-    line-height: 1.3;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    color: var(--med-blue);
 }
 
 .highlight {
-    color: var(--accent-color);
-    /* 增加錯位陰影，模擬木板印刷 */
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+    color: var(--med-terracotta);
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--text-muted);
-    margin-bottom: 3rem;
-    max-width: 600px;
-    border-left: 5px solid var(--accent-color);
-    padding-left: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    color: #5D6D7E;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 1.5rem;
-}
-
-/* 按鈕設計為方正的木板塊風格 */
+/* 按鈕風格 */
 .btn {
-    padding: 0.8rem 2rem;
-    border-radius: 0;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    border: 2px solid var(--text-main);
-    position: relative;
-}
-
-/* 模擬木板畫的立體偏移厚度 */
-.btn::after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 100%;
-    height: 100%;
-    background-color: var(--text-main);
-    z-index: -1;
-    transition: all 0.3s ease;
-}
-
-.btn:hover::after {
-    top: 0;
-    left: 0;
+    font-weight: 500;
+    display: inline-block;
+    transition: 0.3s;
+    margin-right: 1rem;
 }
 
 .btn-primary {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
+    background-color: var(--med-blue);
+    color: white;
 }
 
 .btn-primary:hover {
-    background-color: var(--text-main);
-    color: var(--bg-color);
+    background-color: var(--med-terracotta);
+    transform: translateY(-3px);
 }
 
 .btn-outline {
-    background-color: var(--bg-color);
-    color: var(--text-main);
+    border: 2px solid var(--med-blue);
+    color: var(--med-blue);
 }
 
 .btn-outline:hover {
-    background-color: var(--secondary-color);
-    color: var(--bg-color);
+    background-color: var(--med-blue);
+    color: white;
 }
 
 /* About Section */
-.about-content {
-    color: var(--text-main);
-    font-size: 1.2rem;
-    max-width: 800px;
-    background-color: rgba(255,255,255,0.3);
-    padding: 2.5rem;
-    border: 3px solid var(--text-main);
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.08);
+.about-section {
+    padding: 100px 0;
+    background-color: var(--med-white);
 }
 
-.about-content p {
-    margin-bottom: 1.5rem;
-    text-align: justify;
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--med-blue);
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--med-terracotta);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.about-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 119, 190, 0.05);
+    border-left: 10px solid var(--med-sky);
 }
 
 .skills-container {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
-/* 技能標籤設計為傳統長條題籤（千社札）風格 */
 .skill-tag {
-    background-color: transparent;
-    color: var(--secondary-color);
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 700;
-    border: 2px solid var(--secondary-color);
-    border-radius: 0px;
-    position: relative;
-}
-
-.skill-tag::before {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    right: -5px;
-    bottom: -5px;
-    background-color: rgba(28,46,74,0.08);
-    z-index: -1;
+    background-color: var(--med-sand);
+    color: var(--med-blue);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 500;
 }
 
 /* Contact Section */
 .contact-section {
-    text-align: center;
+    padding: 100px 0;
+    background-color: var(--med-sand);
 }
 
-.contact-section .section-title {
-    display: inline-block;
-}
-
-.contact-text {
-    color: var(--text-main);
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    font-weight: 700;
-}
-
-.contact-links {
+.contact-grid {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap;
 }
 
-/* 聯絡卡片加上粗框與背後錯位色彩 */
 .contact-card {
-    background-color: var(--bg-color);
-    padding: 2rem;
-    border: 3px solid var(--text-main);
+    background: white;
+    padding: 2.5rem;
+    width: 300px;
+    text-align: center;
+    border-radius: 20px;
     text-decoration: none;
-    color: var(--text-main);
-    width: 250px;
-    position: relative;
-    transition: transform 0.3s ease;
-    border-radius: 0;
-}
-
-.contact-card::after {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 100%;
-    height: 100%;
-    background-color: var(--accent-color);
-    z-index: -1;
-    transition: all 0.3s ease;
-}
-
-.contact-card h3 {
-    margin-bottom: 1rem;
-    color: var(--text-main);
-    font-size: 1.5rem;
-    border-bottom: 2px solid var(--text-main);
-    padding-bottom: 0.5rem;
-}
-
-.contact-card p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-weight: 700;
+    color: var(--text-dark);
+    transition: 0.3s;
+    border-bottom: 5px solid var(--med-blue);
 }
 
 .contact-card:hover {
-    transform: translate(-4px, -4px);
+    transform: translateY(-10px);
 }
 
-.contact-card:hover::after {
-    top: 12px;
-    left: 12px;
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--med-terracotta);
 }
 
 /* Footer */
 .footer {
+    padding: 3rem;
     text-align: center;
-    padding: 2rem;
-    color: var(--text-main);
-    font-size: 1rem;
-    background-color: var(--card-bg);
-    border-top: 3px solid var(--text-main);
-    font-weight: 700;
+    background-color: var(--med-blue);
+    color: white;
 }
 
-/* Responsive Design (RWD) */
+/* RWD */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .contact-links {
+    .hero-container {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
     }
     
-    .contact-card {
+    .hero-image {
         width: 100%;
         max-width: 300px;
-        margin-bottom: 1rem;
+        height: auto;
+        aspect-ratio: 350 / 450; /* 維持圓弧比例 */
+    }
+    
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .contact-grid {
+        flex-direction: column;
+        align-items: center;
     }
 }
