@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>張哲綸| Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>張哲綸 | Mediterranean Portfolio</title>
+    <!-- 使用 Noto Sans TC 提供清晰現代感，並選用圓潤的字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">張哲綸</div>
+        <div class="nav-brand">Justin Zhang</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">關於我</a></li>
+            <li><a href="#contact">聯絡方式</a></li>
         </ul>
     </nav>
 
     <section id="hero" class="hero-section">
-        <div class="container hero-content">
-            <h1 class="hero-title">Hi, I'm <span class="highlight">張哲綸</span></h1>
-            <p class="hero-subtitle">熱衷於透過數據分析與經濟模型解決複雜問題。</p>
-            <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary">View Work</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
+        <div class="container hero-container">
+            <!-- 圖片放置在頁面左側 -->
+            <div class="hero-image-wrapper">
+                <img src="Subject.png" alt="張哲綸" class="hero-image">
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">你好，我是 <span class="highlight">張哲綸</span></h1>
+                <p class="hero-subtitle">以數據為引、模型為舟，在經濟的汪洋中尋找最優路徑。</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">探索作品</a>
+                    <a href="#contact" class="btn btn-outline">與我聊聊</a>
+                </div>
             </div>
         </div>
     </section>
@@ -30,7 +37,7 @@
     <section id="about" class="about-section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="about-content">
+            <div class="about-card">
                 <p>我是一名專注於經濟學與數據分析的學習者。我相信隱藏在龐雜數據背後的規律，能夠為商業與政策決策帶來實質的價值。</p>
                 <p>目前致力於將統計學理論與微積分應用於實際的資料處理中，並具備基礎的程式撰寫能力。我喜歡挑戰困難的問題，並尋找最優雅的解決方案。</p>
                 
@@ -47,27 +54,23 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="contact-text">目前正在尋找新的專案合作與實習機會，歡迎隨時與我聯繫！</p>
-            
-            <div class="contact-links">
-                <a href="mailto:example@email.com" class="contact-card">
+            <div class="contact-grid">
+                <a href="mailto:aaczl1210@email.com" class="contact-card">
+                    <div class="card-icon">✉</div>
                     <h3>Email</h3>
                     <p>aaczl1210@email.com</p>
                 </a>
-                <a href="https://github.com" target="_blank" class="contact-card">
+                <a href="https://github.com/zzl31-dev" target="_blank" class="contact-card">
+                    <div class="card-icon">⌨</div>
                     <h3>GitHub</h3>
                     <p>@zzl31-dev</p>
-                </a>
-                <a href="https://linkedin.com" target="_blank" class="contact-card">
-                    <h3>LinkedIn</h3>
-                    <p>張哲綸</p>
                 </a>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2026 Justin Zhang. All rights reserved.</p>
+        <p>&copy; 2026 Justin Zhang. 乘風破浪於數據之海。</p>
     </footer>
 
     <script src="script.js"></script>
